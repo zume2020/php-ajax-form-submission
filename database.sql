@@ -1,5 +1,5 @@
 --
--- Table structure for table `trash`
+-- Table structure for table `fromsub`
 --
 
 CREATE TABLE IF NOT EXISTS `fromsub` (
