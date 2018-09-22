@@ -1,6 +1,13 @@
 {
-    "name": "yourproject/yourproject",
+    "name": "php-ajax/formsubmission",
+    	"description": "Php ajax form submission",
     "type": "project",
+	"authors": [
+		{
+			"name": "Sumithran",
+			"email": "sumithran@india.com"
+		}
+],
     "require": {
         "php": ">=5.5"
     }
