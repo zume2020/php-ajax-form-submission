@@ -13,6 +13,8 @@ if ($Prepared !== false) {
         'name' => $_POST['Name'],
         'msg' => $_POST['Message']
     ]);
+} else {
+    $Query = false;
 }
 
 echo $Query ? 'Working good' : 'Error';
