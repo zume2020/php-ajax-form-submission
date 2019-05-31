@@ -1,19 +1,20 @@
 <?php
-error_reporting( E_ALL & ~E_DEPRECATED & ~E_NOTICE );
-// Establishing connection with server by passing "server_name", "user_id", "password" ,"database_name"
-  $conn = mysqli_connect("server_name", "user_id", "password","database_name");
+error_reporting(E_ALL & ~E_DEPRECATED & ~E_NOTICE);
+try {
+    $PDO = new \PDO('mysql:dbname=database_name;host=server_name;port=3306', 'user_id', 'password');
+} catch (\PDOException $Exception) {
+    echo $Exception->getMessage();
+    die;
+}
 
-//Fetching Values from URL  
-$name  =$_POST['Name'];
-$msg   =$_POST['Message'];
+$Prepared = $PDO->prepare('INSERT INTO `formsub` (`name`, `msg`) values (:name, :msg)');
+if ($Prepared !== false) {
+    $Query = $Prepared->execute([
+        'name' => $_POST['Name'],
+        'msg' => $_POST['Message']
+    ]);
+} else {
+    $Query = false;
+}
 
-//Insert query 
-	$sql = "insert into formsub (name,msg) values ('$name','$msg')";
-  $query = mysqli_query( $conn,$sql);
-  if($query){
-  echo "Working good"; 
-  }else echo "error";
-   
-// clossing connection
-mysqli_close($conn);
-?>
+echo $Query ? 'Working good' : 'Error';
