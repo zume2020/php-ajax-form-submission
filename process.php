@@ -18,3 +18,4 @@ if ($Prepared !== false) {
 }
 
 echo $Query ? 'Working good' : 'Error';
+?>
